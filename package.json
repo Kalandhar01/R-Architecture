@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "generate:portfolio": "node scripts/generate-portfolio-data.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/generate-portfolio-data.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
