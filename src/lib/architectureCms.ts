@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { prisma } from "@/lib/prisma";
 import { heroSupportingContent } from "./architecturePremiumContent";
-import { getProjectsByDivision, type PortfolioProjectView } from "./ourWorksCms";
+import { getOurWorksProjects, type OurWorkProjectView } from "./ourWorksCms";
 
 type RawHero = {
   heading: string;
@@ -290,7 +290,7 @@ export async function getArchitecturePageData() {
           secondaryCtaHref: true
         }
       }).catch(() => null),
-      getProjectsByDivision("Architecture").catch(() => [] as PortfolioProjectView[])
+      getOurWorksProjects("Architecture").catch(() => [] as OurWorkProjectView[])
     ]);
 
     const enriched: ArchitectureProjectView[] = ourWorkProjects
