@@ -301,7 +301,7 @@ export async function getArchitecturePageData() {
         number: String(i + 1).padStart(2, "0"),
         kicker: "Architecture",
         title: p.title,
-        description: p.shortDescription || p.description,
+        description: p.description,
         location: p.location,
         projectType: "Architecture",
         place: p.location,
