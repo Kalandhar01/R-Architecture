@@ -2,9 +2,8 @@ import { createHash } from "node:crypto";
 import type { NextRequest } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-import { projects as staticArchitectureProjects } from "./architectureContent";
 import { heroSupportingContent } from "./architecturePremiumContent";
-import { getOurWorksProjects } from "./ourWorksCms";
+import { getProjectsByDivision, type PortfolioProjectView } from "./ourWorksCms";
 
 type RawHero = {
   heading: string;
@@ -228,83 +227,12 @@ export function slugify(value: string) {
     .slice(0, 80);
 }
 
-function projectNumber(index: number) {
-  return String(index + 1).padStart(2, "0");
-}
-
 function isLegacyDesignHeading(value: string) {
   return [
     "Let's Design Something Extraordinary.",
     "Crafting Timeless Architecture.",
     "Architecture Built Beyond Blueprints."
   ].includes(value.replace(/\u2019/g, "'").replace(/\s+/g, " ").trim());
-}
-
-function toProjectView(project: {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  location: string;
-  projectType: string;
-  year: string;
-  area: string | null;
-  status: string;
-  coverImage: string | null;
-  coverImageAlt: string | null;
-  galleryImages: string[];
-  featured: boolean;
-}, index: number): ArchitectureProjectView {
-  const image = project.coverImage || "/images/architecture/ractysh-laterite-court-residence.avif";
-  const galleryImages = Array.from(new Set([image, ...project.galleryImages].filter(Boolean)));
-
-  return {
-    id: project.id,
-    slug: project.slug,
-    number: projectNumber(index),
-    kicker: project.projectType,
-    title: project.title,
-    description: project.description,
-    location: project.location,
-    projectType: project.projectType,
-    place: project.location,
-    image,
-    alt: project.coverImageAlt || `${project.title} architecture project`,
-    scale: project.area || project.status || project.projectType,
-    detail: project.description,
-    year: project.year,
-    area: project.area,
-    status: project.status,
-    galleryImages,
-    featured: project.featured
-  };
-}
-
-function fallbackProjectViews(): ArchitectureProjectView[] {
-  return staticArchitectureProjects.map((project, index) => {
-    const slug = slugify(project.title);
-
-    return {
-      id: `static-${slug}`,
-      slug,
-      number: project.number || projectNumber(index),
-      kicker: project.kicker,
-      title: project.title,
-      description: project.detail,
-      location: project.place,
-      projectType: project.kicker,
-      place: project.place,
-      image: project.image,
-      alt: project.alt,
-      scale: project.scale,
-      detail: project.detail,
-      year: "Concept",
-      area: null,
-      status: "concept" as string,
-      galleryImages: [project.image],
-      featured: index < 3
-    };
-  });
 }
 
 function toHeroView(hero: {
@@ -344,14 +272,11 @@ export async function ensureArchitectureDefaults() {
 
 export async function getArchitecturePageData() {
   if (!process.env.MONGODB_URI?.trim()) {
-    return {
-      hero: defaultHero,
-      projects: fallbackProjectViews()
-    };
+    return { hero: defaultHero, projects: [] as ArchitectureProjectView[] };
   }
 
   try {
-    const [hero, publishedProjects, ourWorkProjects] = await Promise.all([
+    const [hero, ourWorkProjects] = await Promise.all([
       prisma.architectureHero.findUnique({
         where: { key: "architecture-home" },
         select: {
@@ -364,53 +289,41 @@ export async function getArchitecturePageData() {
           secondaryCtaText: true,
           secondaryCtaHref: true
         }
-      }),
-      prisma.architectureProject.findMany({
-        where: { published: true },
-        orderBy: [{ featured: "desc" }, { position: "asc" }, { createdAt: "asc" }],
-        take: 24,
-        select: {
-          id: true,
-          slug: true,
-          title: true,
-          description: true,
-          location: true,
-          projectType: true,
-          year: true,
-          area: true,
-          status: true,
-          coverImage: true,
-          coverImageAlt: true,
-          galleryImages: true,
-          featured: true
-        }
-      }),
-      getOurWorksProjects()
+      }).catch(() => null),
+      getProjectsByDivision("Architecture").catch(() => [] as PortfolioProjectView[])
     ]);
 
-    const mongoProjects = publishedProjects.length
-      ? publishedProjects.map((p, i) => toProjectView(p as RawProject, i))
-      : [];
-
-    const merged: ArchitectureProjectView[] = [
-      ...mongoProjects,
-      ...ourWorkProjects.map((p, i) => ({
-        ...p,
-        number: String(mongoProjects.length + i + 1).padStart(2, "0"),
-      } as ArchitectureProjectView))
-    ];
+    const enriched: ArchitectureProjectView[] = ourWorkProjects
+      .filter((p) => p.coverImage)
+      .map((p, i) => ({
+        id: p.id,
+        slug: p.slug,
+        number: String(i + 1).padStart(2, "0"),
+        kicker: "Architecture",
+        title: p.title,
+        description: p.shortDescription || p.description,
+        location: p.location,
+        projectType: "Architecture",
+        place: p.location,
+        image: p.coverImage,
+        alt: `${p.title} — Architecture`,
+        scale: "Architecture",
+        detail: p.description || "",
+        year: new Date().getFullYear().toString(),
+        area: null,
+        status: p.status === "Completed" ? "completed" : "ongoing",
+        galleryImages: p.galleryImages,
+        featured: p.featured,
+        category: "architecture",
+      }));
 
     return {
       hero: hero ? toHeroView(hero as unknown as RawHero) : defaultHero,
-      projects: merged.length ? merged : fallbackProjectViews()
+      projects: enriched
     };
   } catch (error) {
-    console.warn("[architecture-cms] Falling back to static homepage content.", error);
-
-    return {
-      hero: defaultHero,
-      projects: fallbackProjectViews()
-    };
+    console.warn("[architecture-cms] Failed to fetch projects.", error);
+    return { hero: defaultHero, projects: [] as ArchitectureProjectView[] };
   }
 }
 

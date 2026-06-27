@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import dbConnect from "@/lib/db"
-import OurWorkProject from "@/models/OurWorkProject"
+import PortfolioProject from "@/models/OurWorkProject"
 import { deleteImage } from "@/lib/cloudinary"
 
 export async function GET(
@@ -11,7 +11,7 @@ export async function GET(
     await dbConnect()
     const { id } = await params
 
-    const project = await OurWorkProject.findById(id).lean()
+    const project = await PortfolioProject.findById(id).lean()
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
@@ -32,7 +32,7 @@ export async function PUT(
     const { id } = await params
     const body = await request.json()
 
-    const project = await OurWorkProject.findByIdAndUpdate(id, body, {
+    const project = await PortfolioProject.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     }).lean()
@@ -56,7 +56,7 @@ export async function DELETE(
     await dbConnect()
     const { id } = await params
 
-    const project = await OurWorkProject.findById(id).lean() as Record<string, unknown> | null
+    const project = await PortfolioProject.findById(id).lean() as Record<string, unknown> | null
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
@@ -64,7 +64,7 @@ export async function DELETE(
     const images: string[] = [project.coverImage as string, ...((project.galleryImages as string[]) || [])].filter(Boolean) as string[]
     await Promise.allSettled(images.map((url: string) => deleteImage(url)))
 
-    await OurWorkProject.findByIdAndDelete(id)
+    await PortfolioProject.findByIdAndDelete(id)
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("[our-works/:id DELETE]", error)

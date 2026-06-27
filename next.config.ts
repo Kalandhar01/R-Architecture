@@ -4,7 +4,7 @@ const csp = [
   `default-src 'self'`,
   `script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.vercel-insights.com https://vercel.live`,
   `style-src 'self' 'unsafe-inline'`,
-  `img-src 'self' data: blob: https: https://res.cloudinary.com`,
+  `img-src 'self' data: blob: https: http://localhost:3001`,
   `font-src 'self' data:`,
   `media-src 'self' blob: https:`,
   `connect-src 'self' https://*.resend.com https://api.resend.com wss: https://*.vercel-insights.com https://vercel.live`,
@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/dgqbgdk73/**",
+        pathname: "/**",
       },
       {
         protocol: "https",
