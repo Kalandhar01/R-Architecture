@@ -7569,6 +7569,49 @@ body {
   transform: scaleX(1);
 }
 
+.architecture-site .arch-journal-footer-company-info {
+  border-top: none;
+  margin-top: 1.5rem;
+  padding-top: 0;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.architecture-site .arch-journal-footer-company-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 0.65rem;
+  color: rgba(245, 240, 231, 0.35);
+}
+
+.architecture-site .arch-journal-footer-company-detail-sep {
+  color: rgba(245, 240, 231, 0.12);
+}
+
+.architecture-site .arch-journal-footer-company-info .arch-journal-footer-legal-link {
+  font-size: 0.65rem;
+  color: rgba(184, 147, 79, 0.5);
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.architecture-site .arch-journal-footer-company-info .arch-journal-footer-legal-link:hover {
+  color: rgba(184, 147, 79, 0.9);
+}
+
+@media (min-width: 768px) {
+  .architecture-site .arch-journal-footer-company-details {
+    font-size: 0.72rem;
+  }
+
+  .architecture-site .arch-journal-footer-company-info .arch-journal-footer-legal-link {
+    font-size: 0.72rem;
+  }
+}
+
 .architecture-site .arch-journal-footer-strip {
   display: grid;
   gap: 0.55rem;

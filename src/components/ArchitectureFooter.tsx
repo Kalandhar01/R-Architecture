@@ -242,6 +242,25 @@ export default function ArchitectureFooter() {
           ))}
         </motion.div>
 
+        <motion.div className="arch-journal-footer-strip arch-journal-footer-company-info" variants={reveal}>
+          <div className="arch-journal-footer-company-details">
+            <span className="arch-journal-footer-company-detail">CIN: U41001TZ2025PTC036582</span>
+            <span className="arch-journal-footer-company-detail-sep">•</span>
+            <span className="arch-journal-footer-company-detail">ROC: Coimbatore</span>
+            <span className="arch-journal-footer-company-detail-sep">•</span>
+            <span className="arch-journal-footer-company-detail">Incorporated: Nov 06, 2025</span>
+            <span className="arch-journal-footer-company-detail-sep">•</span>
+            <a
+              href="https://tracxn.com/d/legal-entities/india/ractysh-design-private-limited/__wYKN9FzKxIUChv7teK_9gFmjjcAXVmfRWBNG_gOKfYQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="arch-journal-footer-legal-link"
+            >
+              Tracxn Verified ✓
+            </a>
+          </div>
+        </motion.div>
+
         <motion.div className="arch-journal-footer-strip" variants={reveal}>
           <span>© 2025 RACTYSH Group</span>
           <span className="arch-journal-footer-legal-links">
