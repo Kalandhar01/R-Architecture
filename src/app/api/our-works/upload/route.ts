@@ -10,9 +10,9 @@ export async function POST(request: NextRequest) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer())
-    const url = await uploadImageBuffer(buffer, file.name)
+    const result = await uploadImageBuffer(buffer, file.name)
 
-    return NextResponse.json({ url })
+    return NextResponse.json({ url: result.url, publicId: result.publicId })
   } catch (error) {
     console.error("[our-works/upload POST]", error)
     return NextResponse.json({ error: "Upload failed" }, { status: 500 })

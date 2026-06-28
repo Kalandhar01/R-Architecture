@@ -1,29 +1,27 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, MapPin } from "lucide-react";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
-import { getProjectBySlug, getRelatedProjects, getAllProjects } from "@/lib/portfolio-data";
+import { getProjectBySlug, getProjectsByDivision } from "@/lib/ourWorksCms";
 import type { Metadata } from "next";
 
-export async function generateStaticParams() {
-  return getAllProjects().map((p) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
   return { title: `${project.title} | Ractysh Design`, description: project.description };
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
-  const related = getRelatedProjects(project.slug, 3);
+  const allProjects = await getProjectsByDivision("Architecture");
+  const related = allProjects.filter((p) => p.slug !== project.slug).slice(0, 3);
   const gallery = project.galleryImages.slice(1);
 
   return (
@@ -37,12 +35,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </Link>
 
           <div className="relative mb-16 aspect-[21/9] w-full overflow-hidden rounded-2xl bg-stone-100">
-            <Image src={project.coverImage} alt={project.title} fill priority sizes="(min-width: 1280px) 90vw, 100vw" className="object-cover" />
+            <img src={project.coverImage} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
           </div>
 
           <div className="mb-16 grid gap-10 lg:grid-cols-2 lg:items-start">
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{project.category}</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{project.division}</p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">{project.title}</h1>
             </div>
             <div className="space-y-6">
@@ -61,7 +59,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 {gallery.map((image, i) => (
                   <div key={`gallery-${i}`} className={`group relative overflow-hidden rounded-xl bg-stone-100 ${i === 0 ? "sm:col-span-2 sm:row-span-2" : ""}`}>
                     <div className="relative aspect-[4/3]">
-                      <Image src={image} alt={`${project.title} gallery ${i + 1}`} fill sizes={i === 0 ? "(min-width: 1024px) 56vw, 100vw" : "(min-width: 1024px) 28vw, 100vw"} className="object-cover transition duration-500 group-hover:scale-105" />
+                      <img src={image} alt={`${project.title} gallery ${i + 1}`} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                     </div>
                   </div>
                 ))}
@@ -77,10 +75,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 {related.map((item) => (
                   <Link key={item.id} href={`/works/${item.slug}`} className="group block overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
                     <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
-                      <Image src={item.coverImage} alt={item.title} fill sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                      <img src={item.coverImage} alt={item.title} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                     </div>
                     <div className="p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{item.category}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{item.division}</p>
                       <h3 className="mt-1 text-xl font-bold leading-tight text-stone-950">{item.title}</h3>
                       <p className="mt-1 text-sm text-stone-500">{item.location}</p>
                     </div>

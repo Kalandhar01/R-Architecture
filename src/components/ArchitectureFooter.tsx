@@ -247,7 +247,11 @@ export default function ArchitectureFooter() {
           <span className="arch-journal-footer-legal-links">
             <Link href="/privacy-policy" className="arch-journal-footer-legal-link">Privacy Policy</Link>
             <span className="arch-journal-footer-legal-sep">•</span>
-            <Link href="/privacy-policy" className="arch-journal-footer-legal-link">Terms &amp; Conditions</Link>
+            <Link href="/terms-and-conditions" className="arch-journal-footer-legal-link">Terms &amp; Conditions</Link>
+            <span className="arch-journal-footer-legal-sep">•</span>
+            <Link href="/cookie-policy" className="arch-journal-footer-legal-link">Cookie Policy</Link>
+            <span className="arch-journal-footer-legal-sep">•</span>
+            <Link href="/disclaimer" className="arch-journal-footer-legal-link">Disclaimer</Link>
           </span>
           <span>{footerContent.locations.items.map((item) => item.label).join(" • ")}</span>
         </motion.div>

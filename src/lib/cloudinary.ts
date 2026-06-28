@@ -23,15 +23,21 @@ export async function uploadImage(filePath: string): Promise<string> {
   return result.secure_url
 }
 
+export interface UploadResult {
+  url: string
+  publicId: string
+}
+
 export async function uploadImageBuffer(
   buffer: Buffer,
   filename: string
-): Promise<string> {
+): Promise<UploadResult> {
   return new Promise((resolve, reject) => {
+    const public_id = filename.replace(/\.[^.]+$/, "").replace(/[^a-zA-Z0-9-_]/g, "-")
     const stream = cloudinary.uploader.upload_stream(
       {
         folder: FOLDER,
-        public_id: filename.replace(/\.[^.]+$/, "").replace(/[^a-zA-Z0-9-_]/g, "-"),
+        public_id,
         resource_type: "image",
         quality: "auto:best",
         fetch_format: "auto",
@@ -41,7 +47,7 @@ export async function uploadImageBuffer(
       },
       (error, result) => {
         if (error) reject(error)
-        else resolve(result!.secure_url)
+        else resolve({ url: result!.secure_url, publicId: result!.public_id })
       }
     )
     stream.end(buffer)

@@ -1,39 +1,37 @@
 import mongoose from "mongoose"
 
-const ourWorkProjectSchema = new mongoose.Schema(
+const portfolioProjectSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     slug: { type: String, unique: true, required: true },
-    category: {
-      type: String,
-      required: true,
-      enum: ["Architecture Works", "Construction Works"],
-    },
+    division: { type: String, required: true, index: true },
+    shortDescription: { type: String, default: "" },
     description: { type: String, default: "" },
     location: { type: String, default: "" },
     status: {
       type: String,
       enum: ["Completed", "Ongoing", "Upcoming"],
-      default: "Completed",
+      default: "Ongoing",
     },
     coverImage: { type: String, default: "" },
     galleryImages: [{ type: String }],
     featured: { type: Boolean, default: false },
     published: { type: Boolean, default: true },
-    position: { type: Number, default: 0 },
+    displayOrder: { type: Number, default: 0 },
+    seoTitle: { type: String, default: "" },
+    seoDescription: { type: String, default: "" },
   },
-  { timestamps: true }
+  { timestamps: true, collection: "portfolioprojects" }
 )
 
-ourWorkProjectSchema.index({ slug: 1 })
-ourWorkProjectSchema.index({ category: 1 })
-ourWorkProjectSchema.index({ featured: -1, position: 1 })
+portfolioProjectSchema.index({ slug: 1 })
+portfolioProjectSchema.index({ division: 1, featured: -1, displayOrder: 1 })
 
-export type OurWorkProjectDocument = mongoose.InferSchemaType<typeof ourWorkProjectSchema> & {
+export type PortfolioProjectDocument = mongoose.InferSchemaType<typeof portfolioProjectSchema> & {
   _id: mongoose.Types.ObjectId
   createdAt: Date
   updatedAt: Date
 }
 
-export default mongoose.models.OurWorkProject ||
-  mongoose.model("OurWorkProject", ourWorkProjectSchema)
+export default mongoose.models.PortfolioProject ||
+  mongoose.model("PortfolioProject", portfolioProjectSchema, "portfolioprojects")

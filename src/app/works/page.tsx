@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
-import { getAllProjects } from "@/lib/portfolio-data";
+import { getProjectsByDivision } from "@/lib/ourWorksCms";
 
 export const metadata: Metadata = {
   title: "Our Works | Ractysh Design",
-  description: "Explore our portfolio of architecture, construction, real estate, and digital projects across Tamil Nadu.",
+  description: "Explore our portfolio of architecture projects across Tamil Nadu.",
 };
 
-export default function WorksPage() {
-  const projects = getAllProjects();
+export const dynamic = "force-dynamic";
+
+export default async function WorksPage() {
+  const projects = await getProjectsByDivision("Architecture");
 
   return (
     <main className="min-h-screen bg-white">
@@ -39,17 +40,15 @@ export default function WorksPage() {
                 className="group block overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
-                  <Image
+                  <img
                     src={project.coverImage}
                     alt={project.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">
-                    {project.category}
+                    {project.division}
                   </p>
                   <h2 className="mt-1 text-xl font-bold leading-tight text-stone-950">
                     {project.title}

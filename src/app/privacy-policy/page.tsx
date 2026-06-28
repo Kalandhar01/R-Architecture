@@ -19,68 +19,98 @@ const sections = [
     id: "introduction",
     title: "1. Introduction",
     content:
-      "Ractysh Design Private Limited ('Ractysh Architecture', 'we', 'us', 'our') is committed to protecting the privacy of individuals who visit our website, use our services, or interact with our studio. This Privacy Policy explains how we collect, use, disclose and safeguard your personal information when you visit our website or engage with our architecture and design consultancy services.",
+      "Ractysh Design Private Limited ('Ractysh Architecture', 'we', 'us', 'our') is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal data when you visit our website, engage our architecture and design consultancy services, or interact with our studio. We adhere to applicable data protection laws and industry best practices to ensure your information is handled responsibly.",
   },
   {
     id: "information-we-collect",
     title: "2. Information We Collect",
     content:
-      "We may collect personal information that you voluntarily provide to us when you express interest in our services, submit a consultation request, subscribe to our newsletter, or otherwise contact us. This may include your full name, email address, telephone number, postal address, project requirements, budget range, property location, and any other details you choose to share with us about your project. We also automatically collect certain information when you visit our website, including your IP address, browser type, operating system, referring URLs, device information, and browsing behaviour through cookies and similar technologies.",
+      "We collect personal information that you voluntarily provide when you inquire about our services, submit a consultation request, subscribe to our newsletter, apply for a career opportunity, or otherwise communicate with us. This may include your full name, email address, telephone number, postal address, project requirements, budget range, property location, and any other details you share. We also automatically collect certain information when you visit our website, such as your IP address, browser type, operating system, referring URLs, device information, and browsing behaviour through cookies and similar technologies.",
   },
   {
-    id: "how-we-use-information",
-    title: "3. How We Use Information",
+    id: "personal-information",
+    title: "3. Personal Information Usage",
     content:
-      "We use the information we collect to respond to your inquiries, provide architectural and design consultation services, process project requests, send administrative information, deliver marketing communications (with your consent where required), improve our website and services, comply with legal obligations, and protect our rights and interests. We process your information on the basis of legitimate business interests, contractual necessity, or your consent, as applicable.",
+      "We use your personal information to respond to your inquiries, provide architectural and design consultation services, process project requests, send administrative updates, deliver marketing communications (with your consent where required), improve our website and services, comply with legal obligations, and protect our rights and interests. We process your data on the basis of legitimate business interests, contractual necessity, or your consent, as applicable.",
   },
   {
-    id: "consultation-requests",
-    title: "4. Consultation Requests",
+    id: "contact-forms",
+    title: "4. Contact Forms",
     content:
-      "When you submit a consultation request through our website, we collect the information necessary to evaluate your project brief and respond with a considered proposal. This information is reviewed by our senior architectural team and stored securely in our project management system. We retain consultation request data for the duration of the project relationship and for a reasonable period thereafter for archival and reference purposes.",
+      "When you submit a contact or consultation form on our website, we collect the information necessary to evaluate your project brief and respond with a considered proposal. This information is reviewed by our senior architectural team and stored securely in our project management system. We retain contact form data for the duration of the project relationship and for a reasonable period thereafter for archival and reference purposes.",
+  },
+  {
+    id: "careers-applications",
+    title: "5. Career Applications",
+    content:
+      "If you submit a career application or portfolio to the studio, we collect your personal information, professional background, work samples, and any other details you provide. This information is used solely for evaluating your application and is retained for the duration of the recruitment process and, with your consent, for future opportunities.",
   },
   {
     id: "newsletter-subscriptions",
-    title: "5. Newsletter Subscriptions",
+    title: "6. Newsletter Subscriptions",
     content:
       "When you subscribe to our newsletter (Studio Notes), we collect your email address and, optionally, your name. We use this information to send you architecture updates, project stories, and design intelligence from the studio. You may unsubscribe at any time using the link provided in each email communication. We use Resend as our email service provider, and your data is processed in accordance with their privacy commitments.",
   },
   {
-    id: "career-applications",
-    title: "6. Career Applications",
-    content:
-      "If you submit a career application or portfolio to the studio, we collect your personal information, professional background, work samples, and any other details you provide. This information is used solely for the purpose of evaluating your application and is retained for the duration of the recruitment process and, with your consent, for future opportunities.",
-  },
-  {
-    id: "data-protection",
-    title: "7. Data Protection",
-    content:
-      "We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. These measures include secure servers, encrypted data transmission, access controls, and regular security assessments. While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.",
-  },
-  {
-    id: "cookies-policy",
-    title: "8. Cookies Policy",
+    id: "cookies",
+    title: "7. Cookies",
     content:
       "Our website uses cookies and similar tracking technologies to enhance your browsing experience, analyse site traffic, and understand where our visitors come from. Cookies are small text files stored on your device by your web browser. We use essential cookies for website functionality, analytics cookies to understand how visitors interact with our site, and preference cookies to remember your settings. You can control cookie preferences through your browser settings. Disabling certain cookies may affect the functionality of our website.",
   },
   {
-    id: "third-party-services",
-    title: "9. Third Party Services",
+    id: "analytics",
+    title: "8. Analytics",
     content:
-      "We engage trusted third-party service providers to support our operations, including website hosting (Vercel), email delivery (Resend), database management (MongoDB), and analytics. These providers are contractually obligated to handle your data in accordance with applicable privacy laws and are prohibited from using your personal information for any purpose other than providing services to us. We do not sell your personal information to third parties.",
+      "We use analytics tools to understand how visitors engage with our website. These tools collect information such as pages visited, time spent on the site, and interaction patterns. This data is aggregated and anonymised wherever possible, helping us improve our website content and user experience. Our analytics providers are contractually obligated to process your data in compliance with applicable privacy laws.",
+  },
+  {
+    id: "data-security",
+    title: "9. Data Security",
+    content:
+      "We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. These measures include secure servers, encrypted data transmission, access controls, and regular security assessments. While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.",
+  },
+  {
+    id: "third-party-services",
+    title: "10. Third-Party Services",
+    content:
+      "We engage trusted third-party service providers to support our operations, including website hosting (Vercel), email delivery (Resend), database management, and analytics. These providers are contractually obligated to handle your data in accordance with applicable privacy laws and are prohibited from using your personal information for any purpose other than providing services to us.",
+  },
+  {
+    id: "data-sharing",
+    title: "11. Data Sharing",
+    content:
+      "We do not sell, trade, or rent your personal information to third parties. We may share your data with trusted service providers who assist us in operating our website and conducting our business, subject to strict confidentiality agreements. We may also disclose your information if required by law or to protect our rights and interests.",
+  },
+  {
+    id: "user-rights",
+    title: "12. User Rights",
+    content:
+      "You have the right to access, correct, update, or request deletion of your personal information held by us. You may also have the right to object to or restrict certain processing activities, and to receive a copy of your data in a portable format. To exercise these rights, please contact us at ractyshdesign@gmail.com. We will respond to your request within 15 business days.",
+  },
+  {
+    id: "data-retention",
+    title: "13. Data Retention",
+    content:
+      "We retain your personal information only as long as necessary to fulfil the purposes for which it was collected, including for legal, accounting, or reporting requirements. When data is no longer required, it is securely deleted or anonymised. The retention period varies depending on the type of data and the nature of our relationship with you.",
+  },
+  {
+    id: "childrens-privacy",
+    title: "14. Children's Privacy",
+    content:
+      "Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal data, we will take steps to delete such information promptly. If you believe we may have collected data from a child, please contact us immediately.",
+  },
+  {
+    id: "policy-updates",
+    title: "15. Policy Updates",
+    content:
+      "We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or operational needs. The updated policy will be posted on this page with the effective date noted at the top. We encourage you to review this policy periodically to stay informed about how we are protecting your information.",
   },
   {
     id: "contact-information",
-    title: "10. Contact Information",
+    title: "16. Contact Information",
     content:
       "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
     contact: true,
-  },
-  {
-    id: "updates-to-this-policy",
-    title: "11. Updates To This Policy",
-    content:
-      "We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or operational needs. The updated policy will be posted on this page with the effective date noted at the top. We encourage you to review this policy periodically to stay informed about how we are protecting your information.",
   },
 ];
 
@@ -90,6 +120,7 @@ const certifications = [
   "Industry Best Practices",
   "Data Privacy Compliant",
   "Secure Consultation Process",
+  "Encrypted Data Transmission",
 ];
 
 export default function PrivacyPolicyPage() {
@@ -97,7 +128,6 @@ export default function PrivacyPolicyPage() {
     <div className="architecture-site min-h-screen bg-white text-nearblack">
       <ArchitectureNav activeSection="" navOverLight={true} />
 
-      {/* Hero Section */}
       <section className="relative overflow-hidden bg-warm-100 py-32 pt-40 text-nearblack sm:py-40 sm:pt-48 lg:py-48 lg:pt-56">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -148,7 +178,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      {/* Content Section */}
       <section className="relative py-20 sm:py-28 lg:py-36">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.02]"
@@ -196,7 +225,6 @@ export default function PrivacyPolicyPage() {
             ))}
           </div>
 
-          {/* Certifications Section */}
           <div className="mt-24 rounded-xl border border-[#C8A45D]/30 bg-gradient-to-br from-warm-50 to-white p-8 sm:p-12">
             <div className="flex items-center gap-4">
               <div className="h-px w-8 bg-[#C8A45D]" />
@@ -218,7 +246,6 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
 
-          {/* Back to Home */}
           <div className="mt-16 text-center">
             <Link
               href="/"
