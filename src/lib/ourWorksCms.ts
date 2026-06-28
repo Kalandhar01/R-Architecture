@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/db"
-import PortfolioProject, { type PortfolioProjectDocument } from "@/models/OurWorkProject"
+import type { PortfolioProjectDocument } from "@/models/OurWorkProject"
+import PortfolioProject from "@/models/OurWorkProject"
 
 export interface PortfolioProjectView {
   id: string
