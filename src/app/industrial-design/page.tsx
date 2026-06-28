@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { IndustrialDesignExperience } from "@/components/IndustrialDesignExperience";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industrial Design | Ractysh",
-  description:
-    "Industrial facilities engineered through architectural intelligence, operational efficiency and long-term growth planning."
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/industrial-design"]);
 
 export default function IndustrialDesignPage() {
   return <IndustrialDesignExperience />;

@@ -4,11 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
 import { getProjectsByDivision } from "@/lib/ourWorksCms";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Works | Ractysh Design",
-  description: "Explore our portfolio of architecture projects across Tamil Nadu.",
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/works"]);
 
 export const dynamic = "force-dynamic";
 

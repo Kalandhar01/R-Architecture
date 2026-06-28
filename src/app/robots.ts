@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://architecture.ractysh.com";
+import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/"
+      allow: "/",
+      disallow: ["/api/", "/admin/", "/architecture/dashboard/"],
     },
-    sitemap: `${siteUrl}/sitemap.xml`
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

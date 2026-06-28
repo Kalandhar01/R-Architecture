@@ -5,6 +5,8 @@ import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
 import { getProjectBySlug, getProjectsByDivision } from "@/lib/ourWorksCms";
 import type { Metadata } from "next";
+import { SITE_URL, COMPANY_SHORT, OG_IMAGE } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +14,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
-  return { title: `${project.title} | Ractysh Design`, description: project.description };
+  const title = `${project.title} | ${COMPANY_SHORT}`;
+  const description = project.shortDescription || project.description;
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/works/${slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/works/${slug}`,
+      siteName: COMPANY_SHORT,
+      type: "article",
+      images: project.coverImage
+        ? [{ url: project.coverImage, width: 1200, height: 675, alt: project.title }]
+        : [{ url: OG_IMAGE, width: 1200, height: 675, alt: COMPANY_SHORT }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: project.coverImage ? [project.coverImage] : [OG_IMAGE],
+    },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {

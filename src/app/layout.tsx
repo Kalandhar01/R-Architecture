@@ -1,17 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { seoContent } from "@/lib/architecturePremiumContent";
+import { SITE_URL, COMPANY_SHORT, SITE_DESCRIPTION, OG_IMAGE, LOGO_IMAGE } from "@/lib/seo";
 
-const siteUrl = "https://architecture.ractysh.com";
-const siteTitle = seoContent.metaTitle;
-const siteDescription = seoContent.metaDescription;
-const ogTitle = seoContent.ogTitle;
-const ogDescription = seoContent.ogDescription;
-const twitterTitle = seoContent.twitterTitle;
-const twitterDescription = seoContent.twitterDescription;
-const previewImage = "/images/architecture/ractysh-built-beyond-blueprints-poster.webp";
-const iconImage = "/images/architecture/ractysh-architecture-logo.webp";
+const siteUrl = SITE_URL;
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -34,36 +26,61 @@ const bodoni = Bodoni_Moda({
   display: "swap"
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#111111",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: siteTitle,
-  description: siteDescription,
+  title: {
+    default: COMPANY_SHORT,
+    template: `%s | ${COMPANY_SHORT}`,
+  },
+  description: SITE_DESCRIPTION,
   alternates: {
-    canonical: "/"
+    canonical: siteUrl,
   },
   openGraph: {
     type: "website",
-    url: "/",
-    siteName: "Ractysh",
-    title: ogTitle,
-    description: ogDescription,
+    url: siteUrl,
+    siteName: COMPANY_SHORT,
+    title: COMPANY_SHORT,
+    description: SITE_DESCRIPTION,
     images: [
       {
-        url: previewImage,
+        url: OG_IMAGE,
         width: 1200,
         height: 675,
-        alt: "Ractysh Design Private Limited — luxury residence with composed light and proportion"
-      }
+        alt: COMPANY_SHORT,
+      },
     ],
-    locale: "en_IN"
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: twitterTitle,
-    description: twitterDescription,
-    images: [previewImage]
+    title: COMPANY_SHORT,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
-  keywords: [...seoContent.keywords],
+  keywords: [
+    "Ractysh Design",
+    "Ractysh Architects",
+    "Architecture Company",
+    "Luxury Architecture",
+    "Interior Design",
+    "Commercial Architecture",
+    "Residential Architecture",
+    "Architects in Tamil Nadu",
+    "Architects in Palani",
+    "Architects in Dindigul",
+    "Architecture Consultancy",
+    "Building Design",
+    "Villa Design",
+    "Interior Design Studio",
+    "Modern Architecture",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -72,13 +89,14 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
-      "max-video-preview": -1
-    }
+      "max-video-preview": -1,
+    },
   },
   icons: {
-    icon: iconImage,
-    apple: iconImage
-  }
+    icon: LOGO_IMAGE,
+    apple: LOGO_IMAGE,
+  },
+  manifest: "/manifest",
 };
 
 export default function RootLayout({
