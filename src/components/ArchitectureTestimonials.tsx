@@ -359,7 +359,7 @@ export function ArchitectureTestimonials() {
               className="relative md:absolute md:inset-0 order-2 md:order-none grid grid-cols-1 lg:grid-cols-[44%_56%]"
             >
               {/* Left Side: Image with advanced parallax & zoom */}
-              <div className="hidden md:block relative h-[36%] lg:h-full w-full overflow-hidden">
+              <div className="block relative h-56 sm:h-64 md:h-[36%] lg:h-full w-full overflow-hidden">
                 <motion.div 
                   initial={{ scale: 1.15, x: direction * 40 }}
                   animate={{ scale: 1, x: 0 }}
