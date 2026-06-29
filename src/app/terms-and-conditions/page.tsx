@@ -2,17 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Ractysh Design Private Limited",
-  description:
-    "Terms and Conditions for Ractysh Design Private Limited. Understand the rules and guidelines for using our website and services.",
-  openGraph: {
-    title: "Terms & Conditions | Ractysh Design Private Limited",
-    description:
-      "Terms and Conditions for Ractysh Design Private Limited. Understand the rules and guidelines for using our website and services.",
-  },
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/terms-and-conditions"]);
 
 const sections = [
   {

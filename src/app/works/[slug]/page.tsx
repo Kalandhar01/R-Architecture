@@ -50,6 +50,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="min-h-screen bg-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: project.title,
+          description: project.shortDescription || project.description,
+          image: project.coverImage,
+          author: { "@type": "Organization", name: COMPANY_SHORT },
+          url: `${SITE_URL}/works/${slug}`,
+          mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/works/${slug}` },
+        }}
+      />
       <ArchitectureNav />
       <section className="px-5 pb-20 pt-36 sm:px-8 lg:px-16">
         <div className="mx-auto max-w-7xl">

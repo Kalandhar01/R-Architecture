@@ -2,17 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Disclaimer | Ractysh Design Private Limited",
-  description:
-    "Disclaimer for Ractysh Design Private Limited. Important information regarding the use of our website and services.",
-  openGraph: {
-    title: "Disclaimer | Ractysh Design Private Limited",
-    description:
-      "Disclaimer for Ractysh Design Private Limited. Important information regarding the use of our website and services.",
-  },
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/disclaimer"]);
 
 const sections = [
   {

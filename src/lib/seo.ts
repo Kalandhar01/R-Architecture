@@ -6,6 +6,12 @@ export const COMPANY_NAME = "RACTYSH DESIGN PRIVATE LIMITED";
 export const COMPANY_SHORT = "Ractysh Design Pvt Ltd";
 export const CIN = "U41001TZ2025PTC036582";
 export const COMPANY_EMAIL = "ractyshdesign@gmail.com";
+export const FOUNDER_NAME = "Ar. P.M.S. Noorul Fawaaz, B.Arch., A.I.I.A.";
+export const FOUNDER_DESCRIPTION = "B.Arch., A.I.I.A.";
+export const COMPANY_ADDRESS_STREET = "D.No.236A, K.K.N. Patty";
+export const COMPANY_ADDRESS_LOCALITY = "Palani";
+export const COMPANY_ADDRESS_REGION = "Dindigul";
+export const COMPANY_ADDRESS_POSTAL = "624601";
 
 export const OG_IMAGE = "/images/architecture/ractysh-built-beyond-blueprints-poster.webp";
 export const LOGO_IMAGE = "/images/architecture/ractysh-architecture-logo.webp";
@@ -74,6 +80,53 @@ export const pageSeo: Record<string, PageSeo> = {
     description:
       "Industrial facilities engineered through architectural intelligence, operational efficiency, and long-term growth planning by Ractysh Design Private Limited.",
     path: "/industrial-design",
+  },
+  "/about": {
+    title: "About Ractysh Design Pvt Ltd | Architecture & Interior Design Firm",
+    description:
+      "Learn about Ractysh Design Private Limited, a premium architecture, interior design, and planning firm based in Tamil Nadu delivering innovative, sustainable, and timeless design solutions across India.",
+    keywords: [
+      "About Ractysh Design",
+      "Architecture Firm Tamil Nadu",
+      "Interior Design Studio",
+      "Ractysh Design Team",
+      "Architecture Company Palani",
+      "Design Consultancy Firm",
+      "Sustainable Architecture",
+    ],
+    path: "/about",
+  },
+  "/founder": {
+    title: "Our Founder | Ar. P.M.S. Noorul Fawaaz | Ractysh Design Pvt Ltd",
+    description:
+      "Meet Ar. P.M.S. Noorul Fawaaz, B.Arch., A.I.I.A., founder of Ractysh Design Private Limited. Visionary architect leading residential, commercial, and luxury design excellence across India.",
+    path: "/founder",
+  },
+  "/blogs": {
+    title: "Architecture & Design Blog | Ractysh Design Pvt Ltd",
+    description:
+      "Explore insights, trends, and stories from Ractysh Design Private Limited. Read about architecture, interior design, villa design, master planning, and sustainable design innovations.",
+    path: "/blogs",
+  },
+  "/careers": {
+    title: "Careers at Ractysh Design Pvt Ltd | Architecture Jobs",
+    description:
+      "Join Ractysh Design Private Limited. Explore career opportunities in architecture, interior design, planning, and design consultancy. Be part of a team creating timeless built environments.",
+    path: "/careers",
+  },
+  "/contact": {
+    title: "Contact Ractysh Design Pvt Ltd | Architecture & Design Studio",
+    description:
+      "Get in touch with Ractysh Design Private Limited. Reach out for residential, commercial, interior design, and architecture consultancy services across Tamil Nadu and India.",
+    keywords: [
+      "Contact Ractysh Design",
+      "Architects in Palani",
+      "Architects in Dindigul",
+      "Architecture Firm Contact",
+      "Interior Design Consultation",
+      "Architecture Enquiry",
+    ],
+    path: "/contact",
   },
   "/privacy-policy": {
     title: "Privacy Policy | Ractysh Design Private Limited",

@@ -2,17 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Ractysh Design Private Limited",
-  description:
-    "Privacy Policy for Ractysh Design Private Limited. Learn how we collect, use and protect your personal information.",
-  openGraph: {
-    title: "Privacy Policy | Ractysh Design Private Limited",
-    description:
-      "Privacy Policy for Ractysh Design Private Limited. Learn how we collect, use and protect your personal information.",
-  },
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/privacy-policy"]);
 
 const sections = [
   {

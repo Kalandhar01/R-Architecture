@@ -2,17 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArchitectureNav from "@/components/ArchitectureNav";
 import ArchitectureFooter from "@/components/ArchitectureFooter";
+import { buildMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy | Ractysh Design Private Limited",
-  description:
-    "Cookie Policy for Ractysh Design Private Limited. Learn how we use cookies and similar tracking technologies.",
-  openGraph: {
-    title: "Cookie Policy | Ractysh Design Private Limited",
-    description:
-      "Cookie Policy for Ractysh Design Private Limited. Learn how we use cookies and similar tracking technologies.",
-  },
-};
+export const metadata: Metadata = buildMetadata(pageSeo["/cookie-policy"]);
 
 const sections = [
   {
