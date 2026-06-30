@@ -190,7 +190,7 @@ function ArchitectureJournalFooter({ onAnchorNavigate }: { onAnchorNavigate: Anc
         <motion.div className="arch-journal-footer-strip" variants={reveal}>
           <span>{heroSupportingContent.eyebrow}</span>
           <span>{footerContent.locations.items.map((item) => item.label).join(" • ")}</span>
-          <span>{footerContent.legal.copyright}</span>
+          <span>{footerContent.legalInfo.copyright}</span>
         </motion.div>
       </div>
     </motion.footer>

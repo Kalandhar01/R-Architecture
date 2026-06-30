@@ -56,7 +56,7 @@ function BrandLogo() {
   );
 }
 
-const architectureFooterColumns = [footerContent.studio, footerContent.services, footerContent.company, footerContent.locations, footerContent.contact] as const;
+const architectureFooterColumns = [footerContent.studio, footerContent.services, footerContent.company, footerContent.legal, footerContent.locations, footerContent.contact] as const;
 const architectureFooterStatement = ["Built Beyond", "Blueprints.", "Designed to Endure."] as const;
 
 type DeskState = "idle" | "submitting" | "success" | "error";

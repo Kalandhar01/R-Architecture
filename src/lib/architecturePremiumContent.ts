@@ -456,9 +456,15 @@ export const footerContent = {
       { label: "About Us", href: "/#studio" },
       { label: "Services", href: "/services" },
       { label: "Works", href: "/#works" },
-      { label: "Consultation", href: "/#architecture-consultation-desk" },
+      { label: "Consultation", href: "/#architecture-consultation-desk" }
+    ]
+  },
+  legal: {
+    title: "Legal",
+    items: [
       { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms & Conditions", href: "/terms-and-conditions" }
+      { label: "Terms & Conditions", href: "/terms-and-conditions" },
+      { label: "Disclaimer", href: "/disclaimer" }
     ]
   },
   locations: {
@@ -480,7 +486,7 @@ export const footerContent = {
       { label: "Join our Journal", href: "#subscribe" }
     ]
   },
-  legal: {
+  legalInfo: {
     copyright: `© 2025 RACTYSH Group`,
     notes: "Part of the Ractysh Group enterprise ecosystem."
   }
