@@ -243,7 +243,7 @@ export default function ArchitectureFooter() {
         </motion.div>
 
         <motion.div className="arch-journal-footer-strip" variants={reveal}>
-          <span>© 2025 RACTYSH GROUP. All Rights Reserved.</span>
+          <span>© 2025 <Link href="https://www.ractysh.com/" className="hover:opacity-80 transition-opacity">RACTYSH GROUP</Link>. All Rights Reserved.</span>
           <span className="arch-journal-footer-legal-links">
             <Link href="/privacy-policy" className="arch-journal-footer-legal-link">Privacy Policy</Link>
             <span className="arch-journal-footer-legal-sep">•</span>

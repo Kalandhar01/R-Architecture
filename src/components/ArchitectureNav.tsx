@@ -44,6 +44,7 @@ export default function ArchitectureNav({ navOverLight = true, activeSection }: 
           <Link href="/services" className={`architecture-nav-link ${activeSection === "services" ? "is-active" : ""}`}>
             Services
           </Link>
+          <Link href="https://www.ractysh.com/" className="architecture-nav-link">RACTYSH</Link>
         </div>
       </nav>
     </header>
