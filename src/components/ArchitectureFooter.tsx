@@ -217,6 +217,36 @@ export default function ArchitectureFooter() {
           ))}
         </motion.div>
 
+        <motion.div className="border-t border-white/5 pt-8 md:pt-10 mt-8 md:mt-10" variants={reveal}>
+          <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+            <div className="min-w-0">
+              <motion.p className="font-display text-lg md:text-xl text-executive-red font-light tracking-tight" variants={reveal}>
+                {footerContent.founder.name}
+              </motion.p>
+              <motion.p className="text-[0.55rem] md:text-[0.6rem] font-bold uppercase tracking-[0.2em] text-white/50 mt-0.5" variants={reveal}>
+                {footerContent.founder.credentials}
+              </motion.p>
+              <motion.p className="text-[0.5rem] md:text-[0.55rem] font-bold uppercase tracking-[0.25em] text-white/70 mt-2" variants={reveal}>
+                {footerContent.founder.role}
+              </motion.p>
+            </div>
+            <div className="hidden md:block w-px bg-white/10 self-stretch" />
+            <motion.div className="flex-1 min-w-0" variants={reveal}>
+              <p className="text-[0.5rem] md:text-[0.55rem] font-bold uppercase tracking-[0.35em] text-executive-red/80 mb-2">{footerContent.founder.company}</p>
+              <p className="text-xs md:text-sm leading-relaxed text-white/60 max-w-2xl">
+                {footerContent.founder.bio}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-3">
+                {footerContent.founder.expertise.map((skill) => (
+                  <span key={skill} className="inline-block px-2.5 py-1 text-[0.5rem] md:text-[0.55rem] font-semibold uppercase tracking-[0.1em] text-executive-red/90 border border-executive-red/20 rounded-full bg-executive-red/5">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
         <motion.div className="arch-journal-footer-columns" variants={staggerReveal}>
           {architectureFooterColumns.map((column) => (
             <motion.div key={column.title} className="arch-journal-footer-column" variants={staggerReveal}>

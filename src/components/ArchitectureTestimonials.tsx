@@ -428,19 +428,10 @@ export function ArchitectureTestimonials() {
 
               {/* Right Side: Testimonial Quote */}
               <div className="bg-nearblack p-6 md:p-12 lg:p-16 text-white">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 1, ease: "backOut" }}
-                >
-                  <Quote className="h-8 w-8 md:h-12 md:w-12 text-executive-red mb-5 md:mb-8" />
-                </motion.div>
-
-                <div>
-                  <p className="font-display text-lg md:text-2xl lg:text-[1.875rem] font-light leading-[1.35] tracking-tight text-white/95">
-                    <LineReveal text={`"${testimonial.quote}"`} delay={0.2} />
-                  </p>
-                </div>
+                <Quote className="h-8 w-8 md:h-12 md:w-12 text-executive-red mb-5 md:mb-8 opacity-100" />
+                <p className="font-display text-lg md:text-2xl lg:text-[1.875rem] font-light leading-[1.35] tracking-tight text-white/95">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
               </div>
             </motion.div>
           </AnimatePresence>

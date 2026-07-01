@@ -453,11 +453,19 @@ export const footerContent = {
   company: {
     title: "Company",
     items: [
-      { label: "About Us", href: "/#studio" },
+      { label: "Founder", href: "/founder" },
       { label: "Services", href: "/services" },
       { label: "Works", href: "/#works" },
       { label: "Consultation", href: "/#architecture-consultation-desk" }
     ]
+  },
+  founder: {
+    name: "C. Naveen",
+    credentials: "B.Arch., BIM",
+    role: "Principal Architect",
+    company: "RACTYSH DESIGN PRIVATE LIMITED",
+    bio: "C. Naveen leads architectural planning and design innovation at RACTYSH Design. With expertise in Building Information Modeling (BIM) and modern architectural practices, he oversees the delivery of sustainable, functional, and aesthetically refined projects across residential, commercial, and institutional sectors.",
+    expertise: ["Architecture", "BIM Technology", "Sustainable Design", "Project Management"]
   },
   legal: {
     title: "Legal",
