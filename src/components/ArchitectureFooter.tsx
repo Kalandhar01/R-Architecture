@@ -272,6 +272,14 @@ export default function ArchitectureFooter() {
           ))}
         </motion.div>
 
+        <motion.div className="flex flex-wrap justify-center gap-4 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white/50" variants={reveal}>
+          <span className="text-executive-red">RACTYSH Ecosystem</span>
+          <a href="https://www.ractysh.com" className="hover:text-white transition-colors">Real Estate</a>
+          <a href="https://construction.ractysh.com" className="hover:text-white transition-colors">Construction</a>
+          <a href="https://associates.ractysh.com" className="hover:text-white transition-colors">OTC Exchange</a>
+          <a href="https://exports.ractysh.com" className="hover:text-white transition-colors">Import &amp; Export</a>
+        </motion.div>
+
         <motion.div className="arch-journal-footer-strip" variants={reveal}>
           <span>© 2025 <Link href="https://www.ractysh.com/" className="hover:opacity-80 transition-opacity">RACTYSH GROUP</Link>. All Rights Reserved.</span>
           <span className="arch-journal-footer-legal-links">
